@@ -17,4 +17,4 @@ Machine Learning Assignment on predicting the bike rental counts.
 
 "forest.py" & "forest2.py" give  solution to task B7.
 
-All output files are stored as '.eps', in the 'plots' folder.
+All output files are stored as '.eps', in the 'plots' folder. (N.B. for pca and cluster, the outputs are stored as ".txt")
