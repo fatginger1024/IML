@@ -7,6 +7,7 @@ from sklearn.svm import SVC
 from sklearn import preprocessing
 from sklearn.linear_model import Perceptron
 from sklearn.svm import SVR
+from sklearn.model_selection import cross_val_score
 from sklearn.metrics import mean_squared_error
 from sklearn.feature_selection import SelectKBest,f_classif
 from sklearn.utils.testing import ignore_warnings
@@ -89,9 +90,30 @@ def svm():
     plt.legend()
     plt.savefig('./plots/svm_one_vs_one.eps')
     plt.show()
+    
+    
+def cv_score():
+    kernel=['poly', 'rbf', 'sigmoid']
+    sc = np.zeros(len(kernel))
+    plt.figure(figsize=(7,5))  
+    for k in range(len(kernel)):
+        svr = SVR(kernel=kernel[k],gamma='auto')
+        #since cross validation algorithm does train-test-validation splitting
+        #we do not have to prer split the data set 
+        X = np.vstack((train_scaled,test_scaled))
+        y = np.hstack((train_labels,test_labels))
+        svr.fit(X, y)
+        sc[k] = np.mean(cross_val_score(svr, X,y,cv=5))
+    plt.plot(kernel,sc,lw=2,color='orange')
+    plt.xlabel(r'$Kernel$')
+    plt.ylabel(r'$CV \ Score$')
+    plt.legend()
+    plt.savefig('./plots/svm_cv_score.eps')
+    plt.show()
+    
 
 svm()
-
+cv_score()
 
 
 
