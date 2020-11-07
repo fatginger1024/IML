@@ -11,4 +11,10 @@ Machine Learning Assignment on predicting the bike rental counts.
 
 "svm.py" gives solution to task B4.
 
+"pca.py" gives solution to task B5.
+
+"cluster.py" gives solution to task B6.
+
+"forest.py" & "forest2.py" give  solution to task B7.
+
 All output files are stored as '.eps', in the 'plots' folder.
